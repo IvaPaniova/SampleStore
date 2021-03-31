@@ -1,0 +1,49 @@
+--Use the Sample_Store database
+USE Sample_Store;
+GO
+
+--Alter column data size
+ALTER TABLE Product 
+ALTER COLUMN ProductName VARCHAR(100)
+
+--Insert into Product table
+INSERT INTO Product VALUES (1,'Moonlight Quad Rollerskates', 'Rollerskates','Balck with chrome finish',3,129)
+INSERT INTO Product VALUES (2,'Impala Quad Rollerskates','Rollerskates','Rose gold with marble wheels',1,175)
+INSERT INTO Product VALUES (3,'Impala AQUA 62x33','Wheels','4 pack LED glitter',54,19.75)
+INSERT INTO Product VALUES (4,'Impala PINK 58x32','Wheels','4 pack no bearings',38,19.75)
+INSERT INTO Product VALUES (5,'Impala Marble 58x32','Wheels','4 pack no bearings tan',26,40)
+INSERT INTO PRODUCT VALUES (6,'Leopard 2 pack','Laces','leopard print 78cm',20,7.88)
+
+DELETE FROM Product where ProductID = 2
+
+--Alter Phone column data size
+ALTER TABLE Member
+ALTER COLUMN Phone VARCHAR(25)
+
+--Insert into Member table
+INSERT INTO Member VALUES (1,'sindy95','12345','sindyjohnson@hmail.com','Sindy','Johnson','626-454-9736')
+INSERT INTO Member VALUES (2,'wintertea','lK34@2P','adiaz@yahoo.com','Amanda','Diaz','515-310-3354')
+INSERT INTO Member VALUES (3,'copycat99','password','chris_fit@gmail.com','Christian','Smith','323-698-3868')
+INSERT INTO Member VALUES (4,'derbylady','p@ssw0rd','derby_violett@gmail.com','Violett','Jackson','818-349-6626')
+
+--Add quantity column into Cart table
+ALTER TABLE Cart 
+ADD Quantity INT
+
+--Insert into Cart table: CartID, MemberID, ProductID, Quantity.
+INSERT INTO Cart VALUES (1,1,4,2)
+INSERT INTO Cart VALUES (2,3,1,1)
+INSERT INTO CART VALUES (3,4,3,2)
+INSERT INTO CART VALUES (4,3,4,2)
+INSERT INTO Cart VALUES (5,2,6,1)
+INSERT INTO CART VALUES (6,1,6,1)
+INSERT INTO Cart VALUES (7,2,2,1)
+INSERT INTO Cart VALUES (8,1,2,1)
+INSERT INTO Cart VALUES (9,1,2,1)
+INSERT INTO Cart VALUES (10,1,2,1)
+
+
+--Select all from Cart, Product and Member. Retrns table.
+SELECT * FROM Cart
+SELECT * FROM Product
+SELECT * FROM Member
