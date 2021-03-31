@@ -1,0 +1,29 @@
+--When quanitity is inserted in Cart table, trigger performs subtraction from product table and updates the stock quntity.
+--If there's not enought stock available the transaction is rolled back and the message is displayed.
+
+
+CREATE TRIGGER UpdateStock
+ON Cart
+FOR INSERT
+AS
+	IF EXISTS (	
+			SELECT *
+			FROM Product as P
+               INNER JOIN inserted AS i on i.ProductID = p.ProductID
+			WHERE p.Stock < i.Quantity)
+	BEGIN
+		--RAISERROR ('Not Enough orders is stock',16,1);
+		ROLLBACK TRANSACTION
+		PRINT('Not enough product in stock')
+	END
+ELSE
+BEGIN
+		UPDATE P 
+		SET Stock = Stock - i.insert_quantity
+		FROM Product P JOIN
+			(	SELECT i.ProductId, SUM(i.quantity) as insert_quantity
+				FROM inserted i
+				GROUP BY i.ProductID
+			) i 
+		ON p.ProductId = i.ProductID
+END;
