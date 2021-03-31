@@ -1,0 +1,27 @@
+USE Sample_Store;
+GO
+
+CREATE TABLE Member (
+	MemberID INT PRIMARY KEY,
+	Username VARCHAR(50),
+	Password VARCHAR(25),
+	Email VARCHAR(50),
+	FirstName VARCHAR(25),
+	LastName VARCHAR(25),
+	Phone VARCHAR(10)
+)
+
+CREATE TABLE Product (
+	ProductID INT PRIMARY KEY,
+	ProductName VARCHAR(10),
+	ProductType VARCHAR(50),
+	Description VARCHAR(100),
+	Stock INT,
+	Price MONEY
+)
+
+CREATE TABLE Cart (
+	CartID INT PRIMARY KEY,
+	MemberID INT FOREIGN KEY REFERENCES Member(MemberID),
+	ProductID INT FOREIGN KEY REFERENCES Product(ProductID)
+)
