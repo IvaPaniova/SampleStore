@@ -1,0 +1,9 @@
+--Returns table with all Members that have placed orders and includes memeber username and ID, product name, product price, how much product is in stock, quanity ordered.
+
+CREATE VIEW MemberOrder AS
+SELECT     dbo.Member.Username, dbo.Cart.Quantity, dbo.Product.ProductName, dbo.Product.Price, dbo.Product.Stock, dbo.Member.MemberID
+FROM       dbo.Member INNER JOIN
+			dbo.Cart ON dbo.Member.MemberID = dbo.Cart.MemberID INNER JOIN
+				dbo.Product ON dbo.Cart.ProductID = dbo.Product.ProductID
+
+SELECT * FROM MemberOrder
