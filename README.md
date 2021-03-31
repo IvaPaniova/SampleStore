@@ -6,4 +6,4 @@ This database includes:
     -triggers to automate insert and delete operations
     -functions to filter through the database
 
-It includes 3 simple table as of 03/30/2021: Customers, Products, Orders.
+It includes 3 simple table as of 03/30/2021: Member, Product, Cart.
